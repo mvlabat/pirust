@@ -1,0 +1,16 @@
+[package]
+name = "pirust_pub_weight"
+version = "0.1.0"
+authors = ["mvlabat <mvlabat@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+mqtt-protocol = "0.7.0"
+tokio = "0.1.22"
+uuid = { version = "0.7.4", features = ["v4"] }
+futures = "0.1.28"
+bincode = "1.1.4"
+failure = "0.1.5"
+
+[dependencies.pirust_common]
+path = "../common"

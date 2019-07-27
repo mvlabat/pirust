@@ -1,2 +1,2 @@
 [workspace]
-members = ["client", "common", "server"]
+members = ["common", "pub_weight", "sub_weight"]
