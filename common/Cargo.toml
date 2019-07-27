@@ -1,0 +1,9 @@
+[package]
+name = "pirust_common"
+version = "0.1.0"
+authors = ["mvlabat <mvlabat@gmail.com>"]
+edition = "2018"
+
+[lib]
+name = "pirust_common"
+path = "lib/lib.rs"

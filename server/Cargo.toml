@@ -1,0 +1,10 @@
+[package]
+name = "pirust_server"
+version = "0.1.0"
+authors = ["mvlabat <mvlabat@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+
+[dependencies.pirust_common]
+path = "../common"
