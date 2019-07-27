@@ -2,7 +2,7 @@
 
 ## Building client
 ```bash
-cargo build --bin pirst_client --target armv7-unknown-linux-musleabihf
+cargo build --bin pirust_client --target armv7-unknown-linux-musleabihf
 ```
 
 ## Running server
