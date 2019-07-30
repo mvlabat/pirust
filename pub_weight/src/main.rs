@@ -31,9 +31,9 @@ fn main() -> Result<(), Error> {
         )
         .get_matches();
 
-    let server_addr = matches.value_of("host").unwrap().to_string();
-    let server_port = matches.value_of("port").unwrap_or("1883").to_string();
-    let server_host = [server_addr, ":".to_string(), server_port].concat();
+    let server_addr = matches.value_of("host").unwrap();
+    let server_port = matches.value_of("port").unwrap_or("1883");
+    let server_host = format!("{}:{}", server_addr, server_port);
 
     println!("Connecting to {:?} ... ", server_host);
     let mut stream = TcpStream::connect(server_host).unwrap();
