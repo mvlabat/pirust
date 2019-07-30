@@ -4,6 +4,7 @@ use futures::stream::Stream;
 use mqtt::{control::variable_header::ConnectReturnCode, packet::*, Decodable, Encodable};
 use tokio::{runtime, timer::Interval};
 use uuid::Uuid;
+use clap::{Arg, App as CliApp};
 
 use std::{io::Write, net::TcpStream, time::Duration};
 
@@ -14,10 +15,28 @@ fn generate_client_id() -> String {
 }
 
 fn main() -> Result<(), Error> {
-    let server_addr = "192.168.1.44:1883";
+    let matches = CliApp::new("Pirust")
+        .version("0.1.0")
+        .arg(Arg::with_name("host")
+          .required(true)
+          .takes_value(true)
+          .index(1)
+          .help("Host name or IP of the MQTT Server (without port)")
+        )
+        .arg(Arg::with_name("port")
+          .required(false)
+          .takes_value(true)
+          .index(2)
+          .help("Port of the MQTT Server")
+        )
+        .get_matches();
 
-    println!("Connecting to {:?} ... ", server_addr);
-    let mut stream = TcpStream::connect(server_addr).unwrap();
+    let server_addr = matches.value_of("host").unwrap();
+    let server_port = matches.value_of("port").unwrap_or("1883");
+    let server_host = format!("{}:{}", server_addr, server_port);
+
+    println!("Connecting to {:?} ... ", server_host);
+    let mut stream = TcpStream::connect(server_host).unwrap();
     println!("Connected!");
 
     let client_id = generate_client_id();
